@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Environment
+.env
+.venv
+venv/
+ENV/
+env/
+
+# SQLite Database
+*.db
+*.db-journal
+
+# Chroma Vector Store Data
+data/charleston_db/
+data/charleston_events_db/
+data/charleston_combined_db/
+
+# IDE / Editor specific
+.vscode/
+.idea/
+*.swp
+*.swo 

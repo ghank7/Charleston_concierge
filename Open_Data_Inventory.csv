@@ -1,0 +1,195 @@
+﻿OBJECTID,Group_,created,modified,title,type,classification,access,numViews,tokenExpirationDate,token2ExpirationDate
+1,Open Data - Central,1663865602000,1704636261000,Buildings,Feature Service,,public,848,-1,-1
+2,Open Data - Central,1663866155000,1704636300000,City Addresses,Feature Service,,public,1106,-1,-1
+3,Open Data - Central,1694797818000,1704636327000,City Council Districts,Feature Service,,public,334,-1,-1
+4,Open Data - Central,1694797838000,1694798073000,City Council Districts (2010-2022),Feature Service,,public,159,-1,-1
+5,Open Data - Central,1663867579000,1704636358000,City Limits,Feature Service,,public,9281,-1,-1
+6,Open Data - Central,1663874173000,1704636476000,Edge of Pavement,Feature Service,,public,537,-1,-1
+7,Open Data - Central,1665078936000,1704636848000,Neighborhood Councils,Feature Service,,public,582,-1,-1
+8,Open Data - Central,1645813223000,1645813522000,New Construction Dashboard (2010-Present),Web Mapping Application,,public,12,-1,-1
+9,Open Data - Central,1681739786000,1704636985000,Open Data Inventory,Feature Service,,public,368,-1,-1
+10,Open Data - Central,1694804810000,1704637519000,Subdivisions Open Data,Feature Service,,public,254,-1,-1
+11,Open Data - Central,1665247167000,1704638281000,Water Around Charleston,Feature Service,,public,510,-1,-1
+12,Open Data - Economic Development,1598473716000,1646248888000,City_TIF_Areas,Feature Service,,public,525,-1,-1
+13,Open Data - Housing,1635271301000,1671024193000,Affordable Housing Dashboard,Dashboard,,public,8577,-1,-1
+14,Open Data - Housing,1665084148000,1704637300000,Public Housing,Feature Service,,public,692,-1,-1
+15,Open Data - Livability,1557429526000,1646271777000,Carriage Alerts Public Dashboard,Dashboard,,public,6642,-1,-1
+16,Open Data - Livability,1632858071000,1646271352000,Carriage Trips By Zone Dashboard,Dashboard,,public,3198,-1,-1
+17,Open Data - Livability,1632947694000,1646239277000,Carriage Trips By Zone Dashboard (Mobile),Dashboard,,public,721,-1,-1
+18,Open Data - Livability,1665521768000,1704636731000,Horse Carriage Sanitation Alerts,Feature Service,,public,439,-1,-1
+19,Open Data - Livability,1648586386000,1703181503000,Horse Carriage Tour Heat Monitor,Dashboard,,public,6933,-1,-1
+20,Open Data - Livability,1665520678000,1704636769000,Horse Carriage Tour Trip Log,Feature Service,,public,480,-1,-1
+21,Open Data - Livability,1646239528000,1646271530000,Horse Carriage Tour Zones,Feature Service,,public,361,-1,-1
+22,Open Data - Livability,1677265211000,1703798133000,Horse Carriage Trips,Dashboard,,public,41,-1,-1
+23,Open Data - Parks,1665084014000,1704637014000,Parks,Feature Service,,public,683,-1,-1
+24,Open Data - Planning,1678136761000,1704636576000,Future Land Use,Feature Service,,public,510,-1,-1
+25,Open Data - Planning,1665083953000,1704636893000,New Construction Permits,Feature Service,,public,891,-1,-1
+26,Open Data - Planning,1665247149000,1704638251000,Urban Growth Boundary,Feature Service,,public,772,-1,-1
+27,Open Data - Public Safety,1665070623000,1704636494000,Fire Stations,Feature Service,,public,849,-1,-1
+28,Open Data - Public Safety,1665084044000,1704637046000,PDI Reported Incidents,Feature Service,,public,527,-1,-1
+29,Open Data - Public Safety,1665246581000,1704637101000,Police Beats,Feature Service,,public,487,-1,-1
+30,Open Data - Public Safety,1665084075000,1704637125000,Police Stations,Feature Service,,public,497,-1,-1
+31,Open Data - Public Safety,1665084090000,1704637149000,Police Teams,Feature Service,,public,430,-1,-1
+32,Open Data - Racial Equity,1634223437000,1652716037000,Charleston Neighborhood Change Index,Web Map,,public,7906,-1,-1
+33,Open Data - Racial Equity,1645646501000,1648063868000,Charleston Racial Equity Timeline,StoryMap,,public,821,-1,-1
+34,Open Data - Racial Equity,1625774116000,1676040745000,City of Charleston Police Department Audit Tracking,Dashboard,,public,1395,-1,-1
+35,Open Data - Racial Equity,1630689279000,1668632346000,"Racial Equity in the City of Charleston, SC",StoryMap,,public,5370,-1,-1
+36,Open Data - Racial Equity,1619805133000,1685727143000,Social Vulnerability,StoryMap,,public,2394,-1,-1
+37,Open Data - Racial Equity,1631203078000,1691599242000,Street Tree Canopy,StoryMap,,public,2979,-1,-1
+38,Open Data - Racial Equity,1639770864000,1665162055000,"Urban Displacement in Charleston, SC",StoryMap,,public,2293,-1,-1
+39,Open Data - Redistricting,1643405648000,1644966300000,2020_PLSummaryFile_FieldNames,Feature Service,,public,171,-1,-1
+40,Open Data - Redistricting,1643405233000,1643405520000,Census Blocks 2020 - City of Charleston,Feature Service,,public,482,-1,-1
+41,Open Data - Redistricting,1661444924000,1665417257000,City Council Redistricting Draft Plan - Alternative 1 (Deprecated),Feature Service,,public,2612,-1,-1
+42,Open Data - Redistricting,1643156923000,1643158030000,Current Plan - Block Equivalency File,Feature Service,,public,185,-1,-1
+43,Open Data - Redistricting,1643156627000,1643158080000,Current Plan - Block Equivalency File (Excel),Microsoft Excel,,public,20,-1,-1
+44,Open Data - Redistricting,1643157858000,1643158063000,Redistricting 2020 Basics Interactive Website,Web Mapping Application,,public,691,-1,-1
+45,Open Data - Redistricting,1663878457000,1665417150000,Redistricting Plans - Three Options,Feature Service,,public,2207,-1,-1
+46,Open Data - Stormwater,1663865343000,1704636120000,Basins,Feature Service,,public,1058,-1,-1
+47,Open Data - Stormwater,1663873887000,1704636419000,Easements,Feature Service,,public,1235,-1,-1
+48,Open Data - Stormwater,1679933196000,1704636831000,Manufactured Treatment Devices,Feature Service,,public,372,-1,-1
+49,Open Data - Stormwater,1486477031000,1511975723000,Map of Drainage System 1950,Image,,public,798,-1,-1
+50,Open Data - Stormwater,1600119691000,1600119816000,Master Drainage Plan,Feature Service,,public,1745,-1,-1
+51,Open Data - Stormwater,1486492347000,1533814870000,Master Drainage Plan 1984,Feature Service,,public,135,-1,-1
+52,Open Data - Stormwater,1512144959000,1533814735000,Master Drainage Plan Scans (Mosaic),Image Service,,public,21,-1,-1
+53,Open Data - Stormwater,1665241645000,1704637568000,SW Culverts,Feature Service,,public,505,-1,-1
+54,Open Data - Stormwater,1665241661000,1704637596000,SW Discharge Points,Feature Service,,public,596,-1,-1
+55,Open Data - Stormwater,1665241676000,1704637619000,SW Fittings,Feature Service,,public,440,-1,-1
+56,Open Data - Stormwater,1665241691000,1704637645000,SW Force Main,Feature Service,,public,467,-1,-1
+57,Open Data - Stormwater,1665241713000,1704637863000,SW Inlets,Feature Service,,public,529,-1,-1
+58,Open Data - Stormwater,1665241771000,1704637977000,SW Manholes Junctions,Feature Service,,public,505,-1,-1
+59,Open Data - Stormwater,1665241802000,1704638000000,SW Network Junction,Feature Service,,public,501,-1,-1
+60,Open Data - Stormwater,1665241817000,1704638020000,SW Network Structures,Feature Service,,public,533,-1,-1
+61,Open Data - Stormwater,1665241833000,1704638054000,SW Open Channels,Feature Service,,public,574,-1,-1
+62,Open Data - Stormwater,1665241853000,1704638078000,SW Outlets,Feature Service,,public,522,-1,-1
+63,Open Data - Stormwater,1665241873000,1704638144000,SW Pipe,Feature Service,,public,649,-1,-1
+64,Open Data - Stormwater,1665241898000,1704638173000,SW Structural BMP,Feature Service,,public,427,-1,-1
+65,Open Data - Stormwater,1665241913000,1704638189000,SW Valves,Feature Service,,public,526,-1,-1
+66,Open Data - Stormwater,1665241928000,1704638211000,SW Virtual Drainlines,Feature Service,,public,621,-1,-1
+67,Open Data - Tideeye,1663814279000,1704636648000,History Flood Closures Daily Count,Feature Service,,public,564,-1,-1
+68,Open Data - Tideeye,1666981105000,1704636669000,History Flood Closures with Conditions,Feature Service,,public,575,-1,-1
+69,Open Data - Tideeye,1663815933000,1704636692000,History Flood Closures Yearly Count,Feature Service,,public,550,-1,-1
+70,Open Data - Tideeye,1594649094000,1675715166000,How high is that seawall?,StoryMap,,public,6266,-1,-1
+71,Open Data - Tideeye,1572873073000,1703801147000,"Local Tide Trends - NOAA Station 8665530 - Charleston Harbor, SC",Dashboard,,public,3024,-1,-1
+72,Open Data - Tideeye,1634063244000,1634063776000,TIDEeye,Web Mapping Application,,public,34,-1,-1
+73,Open Data - Tideeye,1590786106000,1635979732000,TIDEeye Help,StoryMap,,public,2950,-1,-1
+74,Open Data - Transportation,1663873124000,1704636395000,City Streets,Feature Service,,public,747,-1,-1
+75,Open Data - Transportation,1665084217000,1704637329000,Railroads,Feature Service,,public,478,-1,-1
+76,Open Data - Transportation,1596283725000,1598628184000,Regional Road Closures,Web Mapping Application,,public,42,-1,-1
+77,Open Data - Transportation,1664517551000,1704637374000,Road Closures,Feature Service,,public,597,-1,-1
+78,Open Data - Transportation,1665416811000,1704637476000,Side Walks,Feature Service,,public,631,-1,-1
+79,Open Data - Transportation,1666100516000,1704637495000,SpeedHumps,Feature Service,,public,428,-1,-1
+80,Open Data - Transportation,1665244077000,1665431485000,Street Names,Feature Service,,public,285,-1,-1
+81,Open Data - Zoning,1663862669000,1704636039000,Accommodations Overlay,Feature Service,,public,777,-1,-1
+82,Open Data - Zoning,1663863697000,1704636059000,Amusement Recreation Overlay,Feature Service,,public,731,-1,-1
+83,Open Data - Zoning,1663863832000,1704636086000,Base Zoning,Feature Service,,public,1187,-1,-1
+84,Open Data - Zoning,1665076563000,1704636626000,General Business Late Night Overlay,Feature Service,,org,152,-1,-1
+85,Open Data - Zoning,1665077073000,1704636789000,Johns Island Overlay,Feature Service,,public,775,-1,-1
+86,Open Data - Zoning,1665077667000,1704636811000,Landmark Overlay,Feature Service,,public,764,-1,-1
+87,Open Data - Zoning,1665081609000,1704636870000,Neighborhood Districts,Feature Service,,public,594,-1,-1
+88,Open Data - Zoning,1665083968000,1704636914000,Old and Historic District,Feature Service,,public,588,-1,-1
+89,Open Data - Zoning,1665083983000,1704636935000,Old City District Boundary,Feature Service,,public,493,-1,-1
+90,Open Data - Zoning,1665083998000,1704636963000,Old City Height Districts,Feature Service,,public,628,-1,-1
+91,Open Data - Zoning,1665084233000,1704637351000,Restrictive Covenants Overlay,Feature Service,,public,493,-1,-1
+92,Open Data - Zoning,1665084269000,1704637393000,Savannah Highway Overlay,Feature Service,,public,522,-1,-1
+93,Open Data - Zoning,1663861898000,1704637422000,School Overlay,Feature Service,,public,560,-1,-1
+94,Open Data - Zoning,1665084335000,1704637447000,Short Term Rentals Overlay,Feature Service,,public,881,-1,-1
+95,Open Data - Zoning,1665247134000,1704638229000,Tour Boat Overlay,Feature Service,,public,453,-1,-1
+96,Open Data PDI,1480710939000,1532634628000,12 Month Policing Data,Operation View,,org,14,-1,-1
+97,Open Data PDI,1518800642000,1521748719000,2015 Arrests,Feature Service,,public,6065,-1,-1
+98,Open Data PDI,1519167354000,1521746935000,2015 Calls for Service and Officer Initiated Calls,Feature Service,,public,4548,-1,-1
+99,Open Data PDI,1518813770000,1521748344000,2015 Electronic Citations,Feature Service,,public,2076,-1,-1
+100,Open Data PDI,1518807950000,1521748457000,2015 Field Contact Cards,Feature Service,,public,2442,-1,-1
+101,Open Data PDI,1521571164000,1521571207000,2015 Year End Compstat Report,PDF,,public,332,-1,-1
+102,Open Data PDI,1649875193000,1697123383000,2015-2023 Q3 Hate Bias Incidents,Feature Service,,public,570,-1,-1
+103,Open Data PDI,1518802217000,1521748562000,2016 Arrests,Feature Service,,public,6037,-1,-1
+104,Open Data PDI,1518718785000,1521748601000,2016 Calls for Service and Officer Initiated Calls,Feature Service,,public,4646,-1,-1
+105,Open Data PDI,1518815272000,1521747153000,2016 Electronic Citations,Feature Service,,public,2165,-1,-1
+106,Open Data PDI,1518808379000,1521748419000,2016 Field Contact Cards,Feature Service,,public,2538,-1,-1
+107,Open Data PDI,1521571317000,1521571359000,2016 Year End Compstat Report,PDF,,public,240,-1,-1
+108,Open Data PDI,1518804094000,1521748536000,2017 Arrests,Feature Service,,public,6051,-1,-1
+109,Open Data PDI,1518722691000,1521748685000,2017 Calls for Service and Officer Initiated Calls,Feature Service,,public,4725,-1,-1
+110,Open Data PDI,1521721288000,1521730270000,2017 Citizen-Generated Investigations,PDF,,public,376,-1,-1
+111,Open Data PDI,1526654593000,1526654862000,2017 Electronic Citations,Feature Service,,public,2074,-1,-1
+112,Open Data PDI,1518808665000,1521748385000,2017 Field Contact Cards,Feature Service,,public,2527,-1,-1
+113,Open Data PDI,1521722124000,1521730317000,2017 Response to Resistance-Aggression Data,PDF,,public,235,-1,-1
+114,Open Data PDI,1521571513000,1521571561000,2017 Year End Compstat Report,PDF,,public,493,-1,-1
+115,Open Data PDI,1531319110000,1554389637000,2018 Arrests,Feature Service,,public,5739,-1,-1
+116,Open Data PDI,1539175306000,1547138809000,2018 Calls for Service and Officer Initiated Calls,Feature Service,,public,4350,-1,-1
+117,Open Data PDI,1521721943000,1547140003000,2018 Citizen-Generated Investigations,PDF,,public,412,-1,-1
+118,Open Data PDI,1531324082000,1547137783000,2018 Electronic Citations,Feature Service,,public,1991,-1,-1
+119,Open Data PDI,1531320283000,1554390597000,2018 Field Contact Cards,Feature Service,,public,2335,-1,-1
+120,Open Data PDI,1521722199000,1547140167000,2018 Response to Resistance-Aggression Data ,PDF,,public,452,-1,-1
+121,Open Data PDI,1522089345000,1546881614000,2018 Year End Compstat Report,PDF,,public,894,-1,-1
+122,Open Data PDI,1554389566000,1579093320000,2019 Arrests,Feature Service,,public,5332,-1,-1
+123,Open Data PDI,1551795417000,1593714446000,2019 Citizen-Generated Investigations,PDF,,public,460,-1,-1
+124,Open Data PDI,1554392378000,1579092828000,2019 Electronic Citations,Feature Service,,public,1843,-1,-1
+125,Open Data PDI,1547483422000,1579029800000,2019 End of Year Ops Stat Report,PDF,,public,2514,-1,-1
+126,Open Data PDI,1554390638000,1579093093000,2019 Field Contact Cards,Feature Service,,public,2132,-1,-1
+127,Open Data PDI,1551795213000,1580306824000,2019 Response to Resistance-Aggression Data,PDF,,public,493,-1,-1
+128,Open Data PDI,1586445885000,1610123728000,2020 Arrests,Feature Service,,public,4050,-1,-1
+129,Open Data PDI,1586446693000,1610121438000,2020 Calls for Service and Officer Initiated Calls,Feature Service,,public,3206,-1,-1
+130,Open Data PDI,1593616618000,1593616682000,2020 Citizen-Generated Investigations,PDF,,public,313,-1,-1
+131,Open Data PDI,1586443598000,1628086496000,2020 Electronic Citations,Feature Service,,public,1582,-1,-1
+132,Open Data PDI,1628086974000,1628087090000,2020 Electronic Citations Updated,Feature Service,,public,912,-1,-1
+133,Open Data PDI,1586444891000,1610123488000,2020 Field Contact Cards,Feature Service,,public,1738,-1,-1
+134,Open Data PDI,1617907674000,1642186924000,2021 Arrests,Feature Service,,public,2690,-1,-1
+135,Open Data PDI,1617908186000,1642188657000,2021 Calls for Service and Officer Initiated,Feature Service,,public,2025,-1,-1
+136,Open Data PDI,1617907347000,1642187318000,2021 Electronic Citations,Feature Service,,public,1167,-1,-1
+137,Open Data PDI,1617907899000,1642187829000,2021 Field Contact Cards,Feature Service,,public,1206,-1,-1
+138,Open Data PDI,1649871053000,1674579070000,2022 Arrests,Feature Service,,public,1616,-1,-1
+139,Open Data PDI,1649873291000,1674575873000,2022 Calls for Service and Officer Initiated,Feature Service,,public,1283,-1,-1
+140,Open Data PDI,1649872650000,1681747763000,2022 Electronic Citations,Feature Service,,public,735,-1,-1
+141,Open Data PDI,1641830903000,1673982232000,2022 End of Year Ops Stat Report,PDF,,public,1540,-1,-1
+142,Open Data PDI,1649871793000,1681220573000,2022 Field Contacts,Feature Service,,public,856,-1,-1
+143,Open Data PDI,1673281193000,1704819778000,2023 End of Year Ops Stat Report,PDF,,public,472,-1,-1
+144,Open Data PDI,1704818687000,1704818846000,2024 Ops Stat Report Wk 1,PDF,,public,7,-1,-1
+145,Open Data PDI,1488754668000,1493209661000,Arrest Points,Feature Service,,public,81,-1,-1
+146,Open Data PDI,1518804529000,1697733530000,Arrests,Web Mapping Application,,public,9157,-1,-1
+147,Open Data PDI,1518804459000,1697733569000,Arrests Map,Web Map,,public,6575,-1,-1
+148,Open Data PDI,1486589342000,1493209681000,Arrests Table,Feature Service,,public,46,-1,-1
+149,Open Data PDI,1517257680000,1521749246000,CAD Calls January 1 to December 31 2017,Feature Service,,public,261,-1,-1
+150,Open Data PDI,1539118574000,1539173799000,CADYTD2018 with Custom Dates (Uploaded as CSV),Feature Service,,shared,9,-1,-1
+151,Open Data PDI,1570711046000,1579093641000,Calls for Service  and Officer Initiated Calls 2019,Feature Service,,public,3765,-1,-1
+152,Open Data PDI,1518729114000,1697733290000,Calls for Service and Officer Initiated Activity,Web Mapping Application,,public,7138,-1,-1
+153,Open Data PDI,1518720555000,1697729564000,Calls for Service and Officer Initiated Calls,Web Map,,public,5792,-1,-1
+154,Open Data PDI,1479330241000,1493219490000,Calls for Service and Officer Initiated Calls 2009-2013,Feature Service,,public,422,-1,-1
+155,Open Data PDI,1493135777000,1493219515000,Calls for Service and Officer Initiated Calls 2016,Feature Service,,public,617,-1,-1
+156,Open Data PDI,1520518698000,1520518721000,CitizenGeneratedInv2017,Microsoft Excel,,public,30,-1,-1
+157,Open Data PDI,1518723410000,1697733607000,CPD Open Data Police Response Datasets,Web Mapping Application,,public,13437,-1,-1
+158,Open Data PDI,1518818879000,1697732852000,Electronic Citations,Web Mapping Application,,public,4342,-1,-1
+159,Open Data PDI,1512667116000,1533815906000,Electronic Citations (Year to Date),Feature Service,,public,500,-1,-1
+160,Open Data PDI,1518817124000,1697729473000,Electronic Citations Map,Web Map,,public,2513,-1,-1
+161,Open Data PDI,1518808923000,1697729307000,Field Contact Card Map,Web Map,,public,3007,-1,-1
+162,Open Data PDI,1518808960000,1697729853000,Field Contact Cards,Web Mapping Application,,public,4756,-1,-1
+163,Open Data PDI,1486389904000,1493209637000,Field Contact Points,Feature Service,,public,48,-1,-1
+164,Open Data PDI,1486646512000,1493209700000,Field Contacts Table,Feature Service,,public,28,-1,-1
+165,Open Data PDI,1519239990000,1697733452000,Hate Bias,Web Mapping Application,,public,2799,-1,-1
+166,Open Data PDI,1519247409000,1649875394000,Hate Bias Map,Web Map,,public,1817,-1,-1
+167,Open Data PDI,1592233819000,1673296038000,Incidents Map,Web Mapping Application,,public,18563,-1,-1
+168,Open Data PDI,1592233820000,1673295662000,PDI Incidents,Code Attachment,,public,0,-1,-1
+169,Open Data PDI,1493153603000,1533816004000,Public Contacts 2017,Feature Service,,shared,23,-1,-1
+170,Open Data PDI: Compstat Reports,1521571164000,1521571207000,2015 Year End Compstat Report,PDF,,public,332,-1,-1
+171,Open Data PDI: Compstat Reports,1521571317000,1521571359000,2016 Year End Compstat Report,PDF,,public,240,-1,-1
+172,Open Data PDI: Compstat Reports,1521571513000,1521571561000,2017 Year End Compstat Report,PDF,,public,493,-1,-1
+173,Open Data PDI: Compstat Reports,1522089345000,1546881614000,2018 Year End Compstat Report,PDF,,public,894,-1,-1
+174,Open Data PDI: Compstat Reports,1547483422000,1579029800000,2019 End of Year Ops Stat Report,PDF,,public,2514,-1,-1
+175,Open Data PDI: Compstat Reports,1579011263000,1609775487000,2020 End of Year Ops Stat Report,PDF,,public,4304,-1,-1
+176,Open Data PDI: Compstat Reports,1610377405000,1641831208000,2021 End of Year Ops Stat Report,PDF,,public,3264,-1,-1
+177,Open Data PDI: Compstat Reports,1641830903000,1673982232000,2022 End of Year Ops Stat Report,PDF,,public,1540,-1,-1
+178,Open Data PDI: Compstat Reports,1673281193000,1704819778000,2023 End of Year Ops Stat Report,PDF,,public,472,-1,-1
+179,Open Data PDI: Compstat Reports,1704818687000,1704818846000,2024 Ops Stat Report Wk 1,PDF,,public,7,-1,-1
+180,Open Data PDI: Professional Standards,1521721288000,1521730270000,2017 Citizen-Generated Investigations,PDF,,public,376,-1,-1
+181,Open Data PDI: Professional Standards,1521722124000,1521730317000,2017 Response to Resistance-Aggression Data,PDF,,public,235,-1,-1
+182,Open Data PDI: Professional Standards,1521721943000,1547140003000,2018 Citizen-Generated Investigations,PDF,,public,412,-1,-1
+183,Open Data PDI: Professional Standards,1521722199000,1547140167000,2018 Response to Resistance-Aggression Data ,PDF,,public,452,-1,-1
+184,Open Data PDI: Professional Standards,1551795417000,1593714446000,2019 Citizen-Generated Investigations,PDF,,public,460,-1,-1
+185,Open Data PDI: Professional Standards,1551795213000,1580306824000,2019 Response to Resistance-Aggression Data,PDF,,public,493,-1,-1
+186,Open Data PDI: Professional Standards,1593616618000,1593616682000,2020 Citizen-Generated Investigations,PDF,,public,313,-1,-1
+187,Open Data- Green Infrastructure,1683923682000,1697378176000,Land Cover,Feature Service,,public,435,-1,-1
+188,Open Data- Green Infrastructure,1684178338000,1704637073000,Percent Tree Canopy by Street Segment,Feature Service,,public,372,-1,-1
+189,Open Data- Green Infrastructure,1632231630000,1632231630000,Potential Planting Area,Code Attachment,,public,0,-1,-1
+190,Open Data- Green Infrastructure,1684179200000,1704637272000,Potential Planting Areas,Feature Service,,public,329,-1,-1
+191,Open Data- Green Infrastructure,1631203078000,1691599242000,Street Tree Canopy,StoryMap,,public,2979,-1,-1
+192,Open Data- Green Infrastructure,1684175507000,1704637544000,Subdivisions with Percent Tree Canopy,Feature Service,,public,337,-1,-1
+193,Open Data- Green Infrastructure,1684182056000,1700405099000,Tree Canopy Landcover,Feature Service,,public,471,-1,-1
+194,Open Data- Green Infrastructure,1632231629000,1684163659000,Tree Canopy Tools,Web Mapping Application,,public,1629,-1,-1

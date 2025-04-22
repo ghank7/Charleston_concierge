@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charleston Concierge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #2c3e50;
+            color: white;
+            border-radius: 10px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        .header p {
+            margin-top: 5px;
+            font-size: 16px;
+            opacity: 0.8;
+        }
+        .chat-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 70vh;
+        }
+        .chat-messages {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .message {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .message-header {
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+        }
+        .message-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        .user-icon {
+            background-color: #007bff;
+            color: white;
+        }
+        .bot-icon {
+            background-color: #2c3e50;
+            color: white;
+        }
+        .message-content {
+            padding: 10px 16px;
+            border-radius: 8px;
+            width: 100%;
+            word-wrap: break-word;
+            line-height: 1.5;
+        }
+        .user-message .message-content {
+            background-color: #f0f7ff;
+            border-left: 3px solid #007bff;
+        }
+        .bot-message .message-content {
+            background-color: #f8f9fa;
+            border-left: 3px solid #2c3e50;
+        }
+        .separator {
+            height: 1px;
+            background-color: #e9ecef;
+            margin: 15px 0;
+            width: 100%;
+        }
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+        .chat-input input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+            outline: none;
+        }
+        .chat-input button {
+            margin-left: 10px;
+            padding: 0 25px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .chat-input button:hover {
+            background-color: #2980b9;
+        }
+        .typing-indicator {
+            display: none;
+            margin-bottom: 15px;
+        }
+        .typing-indicator .message-content {
+            background-color: #f0f0f0;
+            color: #666;
+            padding: 8px 16px;
+            border-radius: 18px;
+            border-bottom-left-radius: 5px;
+            font-style: italic;
+        }
+        .suggestions {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .suggestion {
+            background-color: #e0f0ff;
+            color: #2c3e50;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .suggestion:hover {
+            background-color: #cce5ff;
+        }
+        /* Bullet point styling */
+        .message-content ul {
+            margin: 5px 0;
+            padding-left: 20px;
+        }
+        .message-content li {
+            margin-bottom: 5px;
+        }
+        /* Sub-bullet indentation */
+        .message-content ul ul {
+            margin-top: 3px;
+            margin-bottom: 8px;
+        }
+        /* Preserve whitespace for proper indentation */
+        .message-content {
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Charleston Concierge</h1>
+            <p>Your personal guide to Charleston's businesses and events</p>
+        </div>
+        
+        <div class="chat-container">
+            <div class="chat-messages" id="chat-messages">
+                <div class="message bot-message">
+                    <div class="message-header">
+                        <div class="message-icon bot-icon">C</div>
+                        <span>Charleston Concierge</span>
+                    </div>
+                    <div class="message-content">
+                        Hello! I'm your Charleston Concierge. Ask me about restaurants, events, activities, or attractions in Charleston, South Carolina.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="typing-indicator" id="typing-indicator">
+                <div class="message-content">
+                    Charleston Concierge is typing...
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Ask me anything about Charleston..." autocomplete="off">
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+        
+        <div class="suggestions">
+            <div class="suggestion" onclick="suggestQuery(this)">What restaurants are near me?</div>
+            <div class="suggestion" onclick="suggestQuery(this)">Events happening this weekend</div>
+            <div class="suggestion" onclick="suggestQuery(this)">Best coffee shops in Charleston</div>
+            <div class="suggestion" onclick="suggestQuery(this)">Historic attractions to visit</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatMessages = document.getElementById('chat-messages');
+            const userInput = document.getElementById('user-input');
+            const sendButton = document.getElementById('send-button');
+            const typingIndicator = document.getElementById('typing-indicator');
+            
+            // Send message when send button is clicked
+            sendButton.addEventListener('click', sendMessage);
+            
+            // Send message when Enter key is pressed
+            userInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            function sendMessage() {
+                const message = userInput.value.trim();
+                if (message === '') return;
+                
+                // Add user message to chat
+                addMessage(message, true);
+                
+                // Add separator
+                addSeparator();
+                
+                // Clear input
+                userInput.value = '';
+                
+                // Show typing indicator
+                typingIndicator.style.display = 'flex';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Send message to server
+                fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message: message })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    // Hide typing indicator
+                    typingIndicator.style.display = 'none';
+                    
+                    // Add bot response to chat
+                    addMessage(data.response, false);
+                    
+                    // Add separator for next message
+                    addSeparator();
+                })
+                .catch(error => {
+                    // Hide typing indicator
+                    typingIndicator.style.display = 'none';
+                    
+                    // Add error message
+                    addMessage('Sorry, I encountered an error. Please try again later.', false);
+                    
+                    // Add separator for next message
+                    addSeparator();
+                    
+                    console.error('Error:', error);
+                });
+            }
+            
+            function addMessage(message, isUser) {
+                const messagesContainer = document.getElementById('chat-messages');
+                const messageElement = document.createElement('div');
+                messageElement.className = isUser ? 'message user-message' : 'message bot-message';
+                
+                // Create message header
+                const messageHeader = document.createElement('div');
+                messageHeader.className = 'message-header';
+                
+                // Create icon
+                const iconElement = document.createElement('div');
+                iconElement.className = isUser ? 'message-icon user-icon' : 'message-icon bot-icon';
+                iconElement.textContent = isUser ? 'U' : 'C';
+                
+                // Create name
+                const nameElement = document.createElement('span');
+                nameElement.textContent = isUser ? 'You' : 'Charleston Concierge';
+                
+                // Append icon and name to header
+                messageHeader.appendChild(iconElement);
+                messageHeader.appendChild(nameElement);
+                
+                // Create content
+                const messageContent = document.createElement('div');
+                messageContent.className = 'message-content';
+                
+                // Format the message: convert line breaks and handle bullet points
+                let formattedContent = message
+                    .replace(/\n/g, '<br>');
+                
+                // Check if the message contains bullet points
+                if (formattedContent.includes('•') || formattedContent.includes('-')) {
+                    // Handle • bullet points (preferred format)
+                    formattedContent = formattedContent.replace(/• (.*?)(<br>|$)/g, function(match, content) {
+                        return '<li>' + content + '</li>';
+                    });
+                    
+                    // Also handle - bullet points as fallback
+                    formattedContent = formattedContent.replace(/- (.*?)(<br>|$)/g, function(match, content) {
+                        return '<li>' + content + '</li>';
+                    });
+                    
+                    // Find bullet lists and wrap them in ul tags
+                    formattedContent = formattedContent.replace(/<li>.*?<\/li>(\s*<li>.*?<\/li>)*/g, function(match) {
+                        return '<ul>' + match + '</ul>';
+                    });
+                    
+                    // Clean up any potential issues
+                    formattedContent = formattedContent
+                        .replace(/<\/li><br><li>/g, '</li><li>') // Remove <br> between list items
+                        .replace(/<ul><br>/g, '<ul>') // Remove <br> after <ul>
+                        .replace(/<br><\/ul>/g, '</ul>') // Remove <br> before </ul>
+                        .replace(/<\/ul><br><ul>/g, '</ul><ul>'); // Remove <br> between lists
+                }
+                
+                messageContent.innerHTML = formattedContent;
+                
+                // Append elements to message
+                messageElement.appendChild(messageHeader);
+                messageElement.appendChild(messageContent);
+                
+                // Append message to container
+                messagesContainer.appendChild(messageElement);
+                
+                // Scroll to the bottom to show the latest message
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+            
+            function addSeparator() {
+                const messagesContainer = document.getElementById('chat-messages');
+                const separator = document.createElement('div');
+                separator.className = 'separator';
+                messagesContainer.appendChild(separator);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }
+        });
+        
+        function suggestQuery(element) {
+            document.getElementById('user-input').value = element.textContent;
+            document.getElementById('send-button').click();
+        }
+    </script>
+</body>
+</html> 

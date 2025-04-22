@@ -1,0 +1,313 @@
+from flask import Flask, render_template, request, jsonify
+from langchain_community.vectorstores import Chroma
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain.chains import RetrievalQA
+import os
+import re
+import datetime
+
+# Get the absolute paths to the database directories
+db_path = os.path.abspath("data/charleston_db")
+events_db_path = os.path.abspath("data/charleston_events_db")
+combined_db_path = os.path.abspath("data/charleston_combined_db")
+
+# Initialize Flask app
+app = Flask(__name__)
+
+# Initialize global variables
+vector_db = None
+events_db = None
+combined_db = None
+qa_chain = None
+
+def init_rag_system():
+    """Initialize the RAG system with vector database and LLM"""
+    global vector_db, events_db, combined_db, qa_chain
+    
+    print("Initializing RAG system...")
+    
+    # Initialize embeddings
+    embeddings = HuggingFaceEmbeddings(
+        model_name="all-MiniLM-L6-v2",
+        model_kwargs={'device': 'cpu'}
+    )
+    
+    # First check if combined database exists
+    if os.path.exists(combined_db_path):
+        print("Loading combined database with businesses and events...")
+        combined_db = Chroma(
+            persist_directory=combined_db_path,
+            embedding_function=embeddings
+        )
+    else:
+        # Load the business vector database
+        print("Loading business database...")
+        vector_db = Chroma(
+            persist_directory=db_path,
+            embedding_function=embeddings
+        )
+        
+        # Load events database if it exists
+        if os.path.exists(events_db_path):
+            print("Loading events database...")
+            events_db = Chroma(
+                persist_directory=events_db_path,
+                embedding_function=embeddings
+            )
+    
+    # Skip Ollama initialization for now
+    print("Skipping Ollama initialization")
+    qa_chain = None
+    
+    print("RAG system initialized!")
+
+@app.route('/')
+def index():
+    """Render the main page"""
+    return render_template('index.html')
+
+@app.route('/api/query', methods=['POST'])
+def query():
+    """API endpoint to handle queries"""
+    data = request.json
+    user_query = data.get('query', '')
+    entity_type = data.get('type', 'all')  # Options: 'all', 'business', 'event'
+    
+    if not user_query:
+        return jsonify({'error': 'No query provided'}), 400
+    
+    # Analyze the query to see if it contains time references
+    has_time_reference = contains_time_reference(user_query)
+    
+    # Get direct matches from the appropriate database
+    matches = []
+    
+    if combined_db:
+        # If we have a combined database, use it with type filter if needed
+        if entity_type != 'all':
+            matches = combined_db.similarity_search_with_relevance_scores(
+                user_query, 
+                k=10,  # Get more results since we'll filter
+                filter={"type": entity_type}
+            )
+        else:
+            # If query has time references, prioritize events
+            if has_time_reference and entity_type == 'all':
+                # First get event matches
+                event_matches = combined_db.similarity_search_with_relevance_scores(
+                    user_query, 
+                    k=5,
+                    filter={"type": "event"}
+                )
+                
+                # Then get business matches
+                business_matches = combined_db.similarity_search_with_relevance_scores(
+                    user_query, 
+                    k=5,
+                    filter={"type": "business"}
+                )
+                
+                # Prefer businesses with events when time is mentioned
+                businesses_with_events = [
+                    m for m in business_matches 
+                    if m[0].metadata.get('has_events', False)
+                ]
+                
+                # If we have businesses with events, prioritize them
+                if businesses_with_events:
+                    business_matches = businesses_with_events[:3]
+                
+                # Combine matches, prioritizing events
+                matches = event_matches + business_matches
+                
+                # Sort by relevance
+                matches.sort(key=lambda x: x[1], reverse=True)
+                
+                # Limit to top combined results
+                matches = matches[:7]
+            else:
+                matches = combined_db.similarity_search_with_relevance_scores(user_query, k=7)
+    else:
+        # Otherwise, search in both databases according to the filter
+        if entity_type == 'all' or entity_type == 'business':
+            if vector_db:
+                business_matches = vector_db.similarity_search_with_relevance_scores(user_query, k=5)
+                matches.extend(business_matches)
+        
+        if entity_type == 'all' or entity_type == 'event':
+            if events_db:
+                event_matches = events_db.similarity_search_with_relevance_scores(user_query, k=5)
+                matches.extend(event_matches)
+        
+        # Sort by relevance if we have mixed results
+        if matches:
+            matches.sort(key=lambda x: x[1], reverse=True)
+            if len(matches) > 7:
+                matches = matches[:7]  # Limit to top combined results
+    
+    # Format matches for display
+    results = []
+    for doc, score in matches:
+        entity_type = doc.metadata.get('type', 'business')  # Default to business if not specified
+        
+        if entity_type == 'business':
+            # Check if business has events
+            has_events = doc.metadata.get('has_events', False)
+            event_count = doc.metadata.get('event_count', 0)
+            
+            # Extract events from content if available
+            upcoming_events = []
+            if "Upcoming Events:" in doc.page_content:
+                events_section = doc.page_content.split("Upcoming Events:")[1].strip()
+                event_lines = events_section.split("\n")
+                for line in event_lines:
+                    if line.startswith("- "):
+                        upcoming_events.append(line[2:])
+            
+            results.append({
+                'name': doc.metadata['name'],
+                'location': doc.metadata['location'],
+                'score': f"{score:.2f}",
+                'description': doc.page_content.split('Description: ')[1].split('\nUpcoming Events:')[0] if 'Description: ' in doc.page_content else '',
+                'url': doc.metadata['url'],
+                'website': doc.metadata.get('website', ''),
+                'image_url': doc.metadata.get('image_url', ''),
+                'phone': doc.metadata.get('phone', ''),
+                'email': doc.metadata.get('email', ''),
+                'type': 'business',
+                'has_events': has_events,
+                'event_count': event_count,
+                'upcoming_events': upcoming_events
+            })
+        elif entity_type == 'event':
+            # Check if event has venue information
+            has_venue = doc.metadata.get('has_venue_info', False)
+            business_id = doc.metadata.get('business_id', None)
+            venue_info = ""
+            
+            # Extract venue info from content if available
+            if "Venue:" in doc.page_content:
+                venue_section = doc.page_content.split("Venue:")[1].strip()
+                venue_info = venue_section.split("\n")[0]
+            
+            results.append({
+                'name': doc.metadata['name'],
+                'date': doc.metadata.get('date', ''),
+                'time': doc.metadata.get('time', ''),
+                'location': doc.metadata.get('location', ''),
+                'score': f"{score:.2f}",
+                'description': doc.page_content.split('Description: ')[1].split('\nVenue:')[0] if 'Description: ' in doc.page_content else '',
+                'url': doc.metadata.get('url', ''),
+                'image_url': doc.metadata.get('image_url', ''),
+                'source': doc.metadata.get('source', ''),
+                'type': 'event',
+                'venue_info': venue_info,
+                'has_venue': has_venue,
+                'business_id': business_id
+            })
+    
+    # Generate a more insightful answer based on the query and results
+    answer = generate_insight(user_query, results)
+    
+    return jsonify({
+        'query': user_query,
+        'answer': answer,
+        'results': results
+    })
+
+def contains_time_reference(query):
+    """Check if the query contains time references like today, tonight, etc."""
+    time_keywords = [
+        'today', 'tonight', 'tomorrow', 'this weekend', 'weekend', 
+        'this week', 'next week', 'monday', 'tuesday', 'wednesday', 
+        'thursday', 'friday', 'saturday', 'sunday'
+    ]
+    
+    # Convert query to lowercase for case-insensitive matching
+    query_lower = query.lower()
+    
+    # Check for direct keyword matches
+    for keyword in time_keywords:
+        if keyword in query_lower:
+            return True
+    
+    # Check for date patterns (e.g., MM/DD, Month DD)
+    date_patterns = [
+        r'\d{1,2}/\d{1,2}',  # MM/DD
+        r'(?:jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]* \d{1,2}'  # Month DD
+    ]
+    
+    for pattern in date_patterns:
+        if re.search(pattern, query_lower):
+            return True
+    
+    return False
+
+def generate_insight(query, results):
+    """Generate a more insightful answer based on the query and results"""
+    if not results:
+        return "I couldn't find any relevant results for your query."
+    
+    # Default answer if we can't generate something better
+    answer = "Here are some matches based on your query. You can filter by businesses or events using the tabs below."
+    
+    # Check if query has time references
+    has_time = contains_time_reference(query)
+    
+    # Count how many businesses and events we have
+    business_count = sum(1 for r in results if r['type'] == 'business')
+    event_count = sum(1 for r in results if r['type'] == 'event')
+    
+    # Get businesses with events
+    businesses_with_events = [r for r in results if r['type'] == 'business' and r.get('has_events', False)]
+    
+    # Get current date for checking "tonight" references
+    today = datetime.datetime.now().strftime('%Y-%m-%d')
+    
+    # Get events happening today
+    today_events = [
+        r for r in results if r['type'] == 'event' and r.get('date', '') == today
+    ]
+    
+    # Parse different types of queries
+    if "tonight" in query.lower() or "today" in query.lower():
+        if event_count > 0:
+            if today_events:
+                answer = f"I found {len(today_events)} events happening today that match your query."
+                if businesses_with_events:
+                    answer += f" I also found {len(businesses_with_events)} businesses with upcoming events."
+            elif event_count > 0:
+                answer = f"I found {event_count} events that might interest you."
+        elif business_count > 0:
+            answer = f"I found {business_count} businesses that match your interests."
+            if businesses_with_events:
+                answer += f" {len(businesses_with_events)} of them have upcoming events."
+    
+    # For food/drink related queries
+    food_drink_keywords = ["restaurant", "food", "eat", "dinner", "lunch", "breakfast", "brunch", 
+                           "bar", "pub", "cocktail", "drink", "coffee", "cafe", "brewery"]
+    
+    if any(keyword in query.lower() for keyword in food_drink_keywords):
+        if business_count > 0:
+            answer = f"I found {business_count} food & drink establishments that match your query."
+            if has_time and businesses_with_events:
+                answer += f" {len(businesses_with_events)} of them have upcoming events."
+    
+    # For entertainment queries
+    entertainment_keywords = ["music", "concert", "show", "performance", "festival", "exhibition", 
+                             "gallery", "theater", "movie", "live", "entertainment"]
+    
+    if any(keyword in query.lower() for keyword in entertainment_keywords):
+        if event_count > 0:
+            answer = f"I found {event_count} entertainment events that match your search."
+            if business_count > 0:
+                answer += f" I also found {business_count} related venues."
+    
+    return answer
+
+if __name__ == '__main__':
+    # Initialize the RAG system before starting the app
+    init_rag_system()
+    
+    # Start the Flask app
+    app.run(debug=True, port=5001) 
