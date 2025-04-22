@@ -108,23 +108,7 @@ Charleston_concierge/
     └── ...                   # ChromaDB files/directories will be created here 
 ```
 
-## Setup
 
-1. Create a virtual environment:
-   ```
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   ```
-
-2. Install dependencies:
-   ```
-   pip install -r requirements.txt
-   ```
-
-3. Build the vector database (if needed):
-   ```
-   python utils/build_vector_db.py
-   ```
 
 ## Running the Application
 
@@ -141,38 +125,12 @@ http://127.0.0.1:5000
 
 1. Enter a natural language query in the search box (e.g., "restaurants with outdoor seating").
 2. Click the "Search" button or press Enter.
-3. View the matching businesses displayed as cards below the search box.
 
-## Event Data
+## Challenges
 
-You can enhance the application with event data using the following scripts:
+The primary challenge with the scope of this system is the dataset. Right now, it's usability is extremely limited by the fact that the database is lackluster in the amount of businesses and the type and quality of those entries. Getting it to this point required building scrapers for individual websites that performed decent for some websites and were non-functional for others. With an improved dataset consisting of multiple sources and a review-location api such as Yelp Fusion or Google Places (which cost money), the agent's parameters could be further improved for much better results.
 
-1. Generate sample events (for testing):
-   ```
-   python utils/create_sample_events.py --count 50
-   ```
+## Future improvements
 
-2. Create connections between events and businesses:
-   ```
-   python utils/create_venue_connections.py 
-   ```
+As stated, the program itself would benefit greatly from an improved dataset that consists of places (from a review service api) and also improved scrapers specifically for social media posts and articles written about the region. If the dataset contained much larger and longer descriptions, reviews, articles, etc., The possibility for a fully functioning local tour guide that rivals even the largest knowledge hubs of the area becomes very real.
 
-3. Build the combined vector database with linked events and businesses:
-   ```
-   python utils/create_venue_connections.py --enhance
-   ```
-
-4. Or you can also directly create the events vector database:
-   ```
-   python utils/build_events_vector_db.py --combined
-   ```
-
-## Scraping Real Events
-
-To scrape real events from Charleston websites:
-
-```
-python utils/scrape_events.py
-```
-
-This will fetch events from various sources and save them to `data/charleston_events.csv`. 
